@@ -279,8 +279,8 @@ public class HandlerMapping {
 	private Map<String, Controller> mappngs;
 	
 	public HandlerMapping() {
-		mappngs = new HashMap<String, Controller>();
-		mappngs.put("/login.do", new LoginController());
+		mappings = new HashMap<String, Controller>();
+		mappings.put("/login.do", new LoginController());
 	}
 	
 	public Controller getController(String path) {
@@ -475,13 +475,13 @@ public class HandlerMapping {
 	private Map<String, Controller> mappngs;
 	
 	public HandlerMapping() {
-		mappngs = new HashMap<String, Controller>();
-		mappngs.put("/login.do", new LoginController());
-		mappngs.put("/getBoardList.do", new GetBoardListController());		
+		mappings = new HashMap<String, Controller>();
+		mappings.put("/login.do", new LoginController());
+		mappings.put("/getBoardList.do", new GetBoardListController());		
 	}
 	
 	public Controller getController(String path) {
-		return mappngs.get(path);
+		return mappings.get(path);
 	}
 
 }
@@ -539,18 +539,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HandlerMapping {
-	private Map<String, Controller> mappngs;
+	private Map<String, Controller> mappings;
 	
 	public HandlerMapping() {
-		mappngs = new HashMap<String, Controller>();
-		mappngs.put("/login.do", new LoginController());
-		mappngs.put("/getBoardList.do", new GetBoardListController());		
-		mappngs.put("/getBoard.do", new GetBoardController());		
+		mappings = new HashMap<String, Controller>();
+		mappings.put("/login.do", new LoginController());
+		mappings.put("/getBoardList.do", new GetBoardListController());		
+		mappings.put("/getBoard.do", new GetBoardController());		
 
 	}
 	
 	public Controller getController(String path) {
-		return mappngs.get(path);
+		return mappings.get(path);
 	}
 
 }
@@ -607,18 +607,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HandlerMapping {
-	private Map<String, Controller> mappngs;
+	private Map<String, Controller> mappings;
 	
 	public HandlerMapping() {
-		mappngs = new HashMap<String, Controller>();
-		mappngs.put("/login.do", new LoginController());
-		mappngs.put("/getBoardList.do", new GetBoardListController());		
-		mappngs.put("/getBoard.do", new GetBoardController());		
-		mappngs.put("/insertBoard.do", new InsertBoardController());		
+		mappings = new HashMap<String, Controller>();
+		mappings.put("/login.do", new LoginController());
+		mappings.put("/getBoardList.do", new GetBoardListController());		
+		mappings.put("/getBoard.do", new GetBoardController());		
+		mappings.put("/insertBoard.do", new InsertBoardController());		
 	}
 	
 	public Controller getController(String path) {
-		return mappngs.get(path);
+		return mappnigs.get(path);
 	}
 }
 ```
@@ -674,20 +674,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HandlerMapping {
-	private Map<String, Controller> mappngs;
+	private Map<String, Controller> mappings;
 	
 	public HandlerMapping() {
-		mappngs = new HashMap<String, Controller>();
-		mappngs.put("/login.do", new LoginController());
+		mappings = new HashMap<String, Controller>();
+		mappings.put("/login.do", new LoginController());
 		mappngs.put("/getBoardList.do", new GetBoardListController());		
-		mappngs.put("/getBoard.do", new GetBoardController());		
-		mappngs.put("/insertBoard.do", new InsertBoardController());		
-		mappngs.put("/updateBoard.do", new UpdateBoardController());		
+		mappings.put("/getBoard.do", new GetBoardController());		
+		mappings.put("/insertBoard.do", new InsertBoardController());		
+		mappings.put("/updateBoard.do", new UpdateBoardController());		
 
 	}
 	
 	public Controller getController(String path) {
-		return mappngs.get(path);
+		return mappings.get(path);
 	}
 
 }
@@ -738,20 +738,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HandlerMapping {
-	private Map<String, Controller> mappngs;
+	private Map<String, Controller> mappings;
 	
 	public HandlerMapping() {
-		mappngs = new HashMap<String, Controller>();
-		mappngs.put("/login.do", new LoginController());
-		mappngs.put("/getBoardList.do", new GetBoardListController());		
-		mappngs.put("/getBoard.do", new GetBoardController());		
-		mappngs.put("/insertBoard.do", new InsertBoardController());		
-		mappngs.put("/updateBoard.do", new UpdateBoardController());		
-		mappngs.put("/deleteBoard.do", new DeleteBoardController());		
+		mappings = new HashMap<String, Controller>();
+		mappings.put("/login.do", new LoginController());
+		mappings.put("/getBoardList.do", new GetBoardListController());		
+		mappings.put("/getBoard.do", new GetBoardController());		
+		mappings.put("/insertBoard.do", new InsertBoardController());		
+		mappings.put("/updateBoard.do", new UpdateBoardController());		
+		mappings.put("/deleteBoard.do", new DeleteBoardController());		
 	}
 	
 	public Controller getController(String path) {
-		return mappngs.get(path);
+		return mappings.get(path);
 	}
 
 }
@@ -791,21 +791,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HandlerMapping {
-	private Map<String, Controller> mappngs;
+	private Map<String, Controller> mappings;
 	
 	public HandlerMapping() {
-		mappngs = new HashMap<String, Controller>();
-		mappngs.put("/login.do", new LoginController());
-		mappngs.put("/getBoardList.do", new GetBoardListController());		
-		mappngs.put("/getBoard.do", new GetBoardController());		
-		mappngs.put("/insertBoard.do", new InsertBoardController());		
-		mappngs.put("/updateBoard.do", new UpdateBoardController());		
-		mappngs.put("/deleteBoard.do", new DeleteBoardController());		
-		mappngs.put("/logout.do", new LogoutController());		
+		mappings = new HashMap<String, Controller>();
+		mappings.put("/login.do", new LoginController());
+		mappings.put("/getBoardList.do", new GetBoardListController());		
+		mappings.put("/getBoard.do", new GetBoardController());		
+		mappings.put("/insertBoard.do", new InsertBoardController());		
+		mappings.put("/updateBoard.do", new UpdateBoardController());		
+		mappings.put("/deleteBoard.do", new DeleteBoardController());		
+		mappings.put("/logout.do", new LogoutController());		
 	}
 	
 	public Controller getController(String path) {
-		return mappngs.get(path);
+		return mappings.get(path);
 	}
 
 }
