@@ -128,7 +128,7 @@ DispatcherServlet은 자신이 사용할 객체들을 생성하기 위해서 스
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/config/presentaion-layer.xml</param-value>	
+			<param-value>/WEB-INF/config/presentation-layer.xml</param-value>	
 		</init-param>
 	</servlet>
 	<servlet-mapping>
