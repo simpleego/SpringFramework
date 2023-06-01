@@ -119,10 +119,13 @@ Mybatis 설정이 아닌 스프링 설정 파일에서 제공하는 것이 맞�
 		<property name="username" value="sa"/>
 		<property name="password" value=""/>
 	</bean>
-	<!-- SqlSessionFactoryBean 생성 -->
-	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<!-- Spring과 Mybatis 연동 설정 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="configLocation" value="classpath:sql-map-config.xml" />
+		<property name="configLocation" value="classpath:sql-map-config.xml"/>
+	</bean>
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"></constructor-arg>
 	</bean>
 	<!-- Spring JDBC 설정 -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
