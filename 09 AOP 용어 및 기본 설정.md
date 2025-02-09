@@ -45,6 +45,9 @@ id 속성으로 포인트컷을 식별하기 위한 유일한 문자열을 선�
    
 **중요한 것은 expression 속성인데,**  
 이 값을 어떻게 설정하느냐에 따라 필터링되는 메소드가 달라진다.    
+
+![image](https://github.com/user-attachments/assets/06ae9dea-f3b0-4469-aec9-d5d419493f0e)
+
 ```
 <aop:pointcut id="getPointcut" expression="execution(* com.springbook.biz..*Impl.get*(..))" />
       
