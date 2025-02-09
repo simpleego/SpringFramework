@@ -87,6 +87,9 @@ INFO : org.springframework.context.support.GenericXmlApplicationContext - Closin
 예를 들면 트랜잭션 관리 기능의 어드바이스 메소드가 있다고 가정시에  
 이 메소드들은 비즈니스 로직 수행 후에 트랜잭션 커밋 또는 롤백을 처리하는 것이 가장 이상적이다.   
 (이전에 한다면 아무런 의미없이 동작하는 것이기에 이러한 언제 동작할지를 지정하는 것이 중요하다.)   
+
+![image](https://github.com/user-attachments/assets/753245f4-7f93-43f2-b517-fd7110154542)
+
    
 **핵심**   
 스프링에서는 어드바이스의 동작 시점을 5가지로 구분할 수 있다.    
