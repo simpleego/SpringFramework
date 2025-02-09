@@ -193,9 +193,10 @@ AOP의 핵심은 바로 애스팩트이다.
 AOP 설정에서 ```<aop:config>```는 루트 엘리먼트이다.   
 **스프링 설정 파일 내에 ```<aop:config>```엘리먼트는 여러 번 사용할 수 있으며**   
 ```<aop:config>```하위에는 ```<aop:pointcut>```,```<aop:aspect>```엘리먼트가 위치할 수 있다.  
-   
-![KakaoTalk_20191104_224705788](https://user-images.githubusercontent.com/50267433/68125524-246df600-ff55-11e9-8f3d-051fe42d6cc3.jpg)
-     
+--- 
+![image](https://github.com/user-attachments/assets/8b928c42-78e3-4b90-b4f4-4c3f60921814)
+--- 
+
 ## 2.2. ```<aop:pointcut>```엘리멘트
 ```<aop:pointcut>```엘리먼트는 포인트컷을 지정하기 위해 사용하며,  
 ```<aop:config>```의 자식이나 ```<aop:aspect>```의 자식 엘리먼트로 사용할 수 있다.   
