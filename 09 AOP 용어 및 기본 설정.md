@@ -173,7 +173,7 @@ AOP의 핵심은 바로 애스팩트이다.
   
 종합하자면 애스팩트와 어드바이저가 같은 의미의 용어를 나타내는 것이다.   
   
-## 2. 1.6. AOP 용어 종합
+## 2.1.6. AOP 용어 종합
 
 ![image](https://github.com/user-attachments/assets/d3b9423d-c7ab-4f36-a023-11805ec79a5d)
 
@@ -204,9 +204,9 @@ AOP 설정에서 ```<aop:config>```는 루트 엘리먼트이다.
    
 ```<aop:pointcut>```은 여러 개 정의할 수 있으며,  
 유일한 아이디를 할당하여 애스팩트를 설정할 때 포인트컷을 참조하는 용도로 사용한다.  
-
-![KakaoTalk_20191104_225744621](https://user-images.githubusercontent.com/50267433/68126197-96930a80-ff56-11e9-9faa-c17e6b252f5d.jpg)
-  
+--- 
+![image](https://github.com/user-attachments/assets/81a6f2c6-4dd3-41ac-ab29-0486139893ec)
+---   
 allPointcut이라는 포인트컷은 com.springbook.biz 패키지로 시작하는 클래스 중에서   
 이름이 Impl로 끝나는 클래스의 모든 메소드를 포인트컷으로 설정하고 있다.   
   
