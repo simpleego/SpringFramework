@@ -3,10 +3,9 @@
 # 1. Spring MVC 수행 흐름   
 대부분의 MVC 프레임워크는 비슷한 구조를 가졌다.    
 따라서 하나의 프레임워크만 잘 이해하면 다른 프레임워크도 쉽게 이해할 수 있다.      
-   
-![image](https://github.com/user-attachments/assets/b9b9392d-68ab-478a-99ba-a190c5ef4247)
 
-   
+![image](https://github.com/user-attachments/assets/b6ed206a-bfce-456c-9ad1-4fef3e8c3034)
+     
 **Spring MVC 수행 흐름**   
   
 1. 클라이언트로부터 모든 ```.do``` 요청을 DispatcherServlet이 받는다.     
