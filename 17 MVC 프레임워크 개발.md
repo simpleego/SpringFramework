@@ -8,6 +8,13 @@ DispatcherServlet 클래스 하나로 Controller 기능을 구현했다.
 
 ![image](https://github.com/user-attachments/assets/ba6b9d7e-5239-48e8-b44b-afa264f043bc)
 
+| 클래스 | 기능 |
+|-------------------|---------------------------------------------------------------------------------------|
+| DispatcherServlet | 유일한 서블릿 클래스로서 모든 클라이언트의 요청을 가장 먼저 처리하는 Front Controller |
+| HandlerMapping    | 클라이언트의 요청을 처리할 Controller 매핑                                            |
+| Controller        | 실질적인 클라이언트의 요청 처리                                                       |
+| ViewResolver      | Controller가 리턴한 View 이름으로 실행될 JSP 경로 완성                                |
+
 **DispatcherServlet**
 ```
 package com.springbook.view.controller;
