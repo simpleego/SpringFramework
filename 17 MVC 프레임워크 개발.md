@@ -6,17 +6,6 @@ DispatcherServlet 클래스 하나로 Controller 기능을 구현했다.
 하지만 이렇게 하나의 서블릿으로 Controller를 구현하면 클라이언트의 모든 요청을 하나의 서블릿이 처리하게 된다.  
 따라서 수많은 분기 처리 로직을 가질 수밖에 없고, 이는 오히려 개발과 유지보수를 어렵게 만든다.   
 
-![image](https://github.com/user-attachments/assets/ba6b9d7e-5239-48e8-b44b-afa264f043bc)
-
---- 
-| 클래스 | 기능 |
-|-------------------|---------------------------------------------------------------------------------------|
-| DispatcherServlet | 유일한 서블릿 클래스로서 모든 클라이언트의 요청을 가장 먼저 처리하는 Front Controller |
-| HandlerMapping    | 클라이언트의 요청을 처리할 Controller 매핑                                            |
-| Controller        | 실질적인 클라이언트의 요청 처리                                                       |
-| ViewResolver      | Controller가 리턴한 View 이름으로 실행될 JSP 경로 완성                                |
-
-
 --- 
 **DispatcherServlet**
 ```
@@ -194,8 +183,17 @@ DispatcherServlet 클래스가 이렇게 복잡하게 구현되어 있으면 특
 따라서 본격적으로 Spring MVC를 적용하기 전에 Spring MVC와 동일한 구조의  
 프레임워크를 직접 구현하여 적용하려고 한다.  
 이런 단계를 거침으로써 Spring MVC 의 구성 요소와 동작 원리를 더욱 쉽게 이해할 수 있을 것이다.   
+
+![image](https://github.com/user-attachments/assets/ba6b9d7e-5239-48e8-b44b-afa264f043bc)
+
+--- 
+| 클래스 | 기능 |
+|-------------------|---------------------------------------------------------------------------------------|
+| DispatcherServlet | 유일한 서블릿 클래스로서 모든 클라이언트의 요청을 가장 먼저 처리하는 Front Controller |
+| HandlerMapping    | 클라이언트의 요청을 처리할 Controller 매핑                                            |
+| Controller        | 실질적인 클라이언트의 요청 처리                                                       |
+| ViewResolver      | Controller가 리턴한 View 이름으로 실행될 JSP 경로 완성                                |
    
- 
 이제 MVC 프레임워크에서 Controller를 구성하는 각 요소를 직접 구현해봄으로써  
 스프링에서 제공하는 클래스들의 기능도 유추할 수 있다.  
 이제 로그인 기능을 구현하면서 각 구성 요소들을 만들어보자   
@@ -424,7 +422,7 @@ public class DispatcherServlet extends HttpServlet {
 마지막으로 Controller가 리턴한 View 이름을 이용하여 실행될 View를 찾아 해당 화면으로 이동한다.   
 다음은 지금까지 개발한 로그인 기능이 동작하는 과정을 그림으로 표현한 것이다.  
    
-
+![image](https://github.com/user-attachments/assets/1d707a60-05dc-4f51-bd4d-a1a50dd58956)
 
 1. 클라이언트가 로그인 버튼을 클릭하여 ```/login.do```요청을 전송하면 DispatcherSerlvet이 요청을 받는다. 
 2. DispatcherSerlvet은 HandlerMapping 객체를 통해 로그인 요청을 처리할 LoginController를 검색하고,  
