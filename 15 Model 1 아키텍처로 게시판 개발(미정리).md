@@ -3,8 +3,7 @@
 # 1. Model 1 아키텍처 구조
 90년대 말부터 2000년대 초까지 자바 기반의 웹 어플리케이션 개발에 사용됐던 아키텍처는 Model 1 이다.   
 Model 1 아키텍처는 JSP 와 JavaBeans만 사용하여 웹을 개발하는 것이다.   
-![image](https://github.com/user-attachments/assets/69f432cf-f512-4d8a-a479-92afc1a9791a)
-
+![image](https://github.com/user-attachments/assets/b4d2c317-2474-4ce7-8484-efa5d83b9d3b)
   
 Bean 이라는 용어는 객체를 의미하는 것으로 JavaBean 하면 자바 객체를 의미한다.   
 결국, JavaBeans 는 데이터베이스 연동에 사용되는 자바 객체들이다.   
