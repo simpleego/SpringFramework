@@ -4,7 +4,8 @@
 대부분의 MVC 프레임워크는 비슷한 구조를 가졌다.    
 따라서 하나의 프레임워크만 잘 이해하면 다른 프레임워크도 쉽게 이해할 수 있다.      
    
-[사진]
+![image](https://github.com/user-attachments/assets/b9b9392d-68ab-478a-99ba-a190c5ef4247)
+
    
 **Spring MVC 수행 흐름**   
   
