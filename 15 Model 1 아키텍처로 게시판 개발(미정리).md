@@ -18,9 +18,9 @@ Model 1 아키텍처에서는 JSP 파일이 가장 중요한 역할을 수행하
 먼저 Controller 기능은 JSP 파일에 작성된 자바 코드를 의미한다.   
 하지만 JSP 파일에 작성된 모든 자바 코드를 Controller 라고 하지 않으며  
 일반적으로 Controller 는 사용자의 요청 처리와 관련된 자바 코드를 의미한다.   
-  
-![KakaoTalk_20191124_201029116](https://user-images.githubusercontent.com/50267433/69493796-8f787000-0ef6-11ea-8b03-6c8392cf0179.jpg)  
-  
+
+![image](https://github.com/user-attachments/assets/b0380987-ed5c-4e41-ade1-09627da9da98)
+
 그리고 JSP에서는 Model을 사용하여 검색한 데이터를 사용자가 원하는 화면으로 제공하기 위해서 다양한 마크업을 사용한다.  
 이때 사용되는 대표적인 마크업 언어가 바로 HTML 과 CSS 이며 이 두가지 마크업이 View 기능을 담당한다.  
   
