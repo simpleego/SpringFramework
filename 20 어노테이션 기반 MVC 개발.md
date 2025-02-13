@@ -210,7 +210,7 @@ insertBoard() 메소드의 매개변수로 사용자가 입력한 값을 매핑�
 그리고 이때 사용자가 입력한 값들을 Command 객체에 세팅까지 해서 넘겨준다.  
 결과적으로 사용자 입력 정보 추출과 VO 객체 생성, 그리고 값 설정을 모두 컨테이너가 자동으로 처리하는 것이다.  
     
-   [그림]   
+![image](https://github.com/user-attachments/assets/724e8d8a-3d34-4a11-968a-9546792ff3e0)   
      
 1. 서블릿 컨테이너는 클라이언트의 HTTP 요청이 서버에 전달되는 순간 
 2. HttpServletRequest 객체를 생성하고 HTTP 프로토콜에 설정된 모든 정보를 추출하여 HttpServletRequest 객체에 저장한다.  
