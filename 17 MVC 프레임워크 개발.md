@@ -425,7 +425,7 @@ public class DispatcherServlet extends HttpServlet {
 마지막으로 Controller가 리턴한 View 이름을 이용하여 실행될 View를 찾아 해당 화면으로 이동한다.   
 다음은 지금까지 개발한 로그인 기능이 동작하는 과정을 그림으로 표현한 것이다.  
    
-[그림]   
+
 
 1. 클라이언트가 로그인 버튼을 클릭하여 ```/login.do```요청을 전송하면 DispatcherSerlvet이 요청을 받는다. 
 2. DispatcherSerlvet은 HandlerMapping 객체를 통해 로그인 요청을 처리할 LoginController를 검색하고,  
