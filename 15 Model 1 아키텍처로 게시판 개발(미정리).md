@@ -147,9 +147,7 @@ USERS 테이블에 등록된 계정으로 로그인에 성공하면 글목록 �
 화면 내비게이션 방법에는 포워드 방식과 리다이렉트 두 가지 방법이 있지만,  
 당분간은 로직의 단순화를 위해서 리다이렉트 방식만을 사용해서 개발한다.  
 
-
-    
-![KakaoTalk_20191124_220330240](https://user-images.githubusercontent.com/50267433/69495089-724b9d80-0f06-11ea-8990-f8919235ad20.jpg)   
+![image](https://github.com/user-attachments/assets/c65e8b8a-da8b-48f5-8eb6-047a9769a777)
            
 ***
 # 3. 글 목록 검색 기능 구현
