@@ -92,8 +92,10 @@ DispathcerServlet은 Spring 컨테이너를 구동할 때, web.xml 파일에 등
 1. 이클립스의 프로젝트 탐색 창에서 WEB-INF 폴더에 마우스 오른쪽 버튼을 클릭하여 ```[New]->[Other]```메뉴를 선택한다.   
 2. Spring 폴더에서 'Spring Bean configuration file'을 선택하고 ```<Next>```를 클릭한다.  
 3. 'File name'에 'action-servlet.xml'파일명을 입력하고 ```<Finish>```를 클릭하면 WEB-INF 폴더에 action-servlet.xml 파일이 생성된다.  
-3. 다시 서버를 재구동 해야한다.  
-   
+3. 다시 서버를 재구동 해야한다.
+
+![image](https://github.com/user-attachments/assets/b2f00b9c-13fe-42c3-a14c-3e2aff785169)
+  
 ***
 # 3. 스프링 설정 파일 변경
 DispatcherServlet은 자신이 사용할 객체들을 생성하기 위해서 스프링 컨테이너를 구동한다.    
