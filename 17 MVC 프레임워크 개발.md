@@ -1,10 +1,12 @@
-17 MVC 프레임워크 개발f
+17 MVC 프레임워크 개발
 =======================
 # 1. MVC 프레임워크 구조  
 지금까지 개발한 게시판 프로그램은 MVC 아키텍처를 적용하긴 했지만,  
 DispatcherServlet 클래스 하나로 Controller 기능을 구현했다.  
 하지만 이렇게 하나의 서블릿으로 Controller를 구현하면 클라이언트의 모든 요청을 하나의 서블릿이 처리하게 된다.  
 따라서 수많은 분기 처리 로직을 가질 수밖에 없고, 이는 오히려 개발과 유지보수를 어렵게 만든다.   
+
+![image](https://github.com/user-attachments/assets/ba6b9d7e-5239-48e8-b44b-afa264f043bc)
 
 **DispatcherServlet**
 ```
