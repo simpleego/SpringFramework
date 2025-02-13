@@ -9,7 +9,8 @@ Model 1 아키텍처가 엔터프라이즈 시스템에 적합하지 않은 이�
 이런 Model 1 아키텍처의 문제를 해결하기 위해 고안된 웹 개발 모델이 Model 2 아키텍처,   
 즉 MVC 아키텍처이고 가장 중요한 특징은 Controller의 등장이며, 이 Controller는 서블릿 클래스를 중심으로 구현된다.   
    
-[사진]   
+![image](https://github.com/user-attachments/assets/577bc458-dc14-4a5d-b420-a17cfc841d49)
+
   
 Model 2 아키텍처에서는 기존에 JSP가 담당했던 Controller 로직이 별도의 Controller 기능의 서블릿으로 옮겨졌다.     
 따라서 기존에 Model 1 아키텍처로 개발한 프로그램에서 JSP 파일에 있는 자바 코드만 Controller로 이동하면     
