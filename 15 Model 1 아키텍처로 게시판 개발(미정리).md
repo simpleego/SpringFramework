@@ -59,19 +59,6 @@ JSP 파일 생성 대화상자가 열리면 'File name'에 'login' 또는 'login
 ```
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%
-	// 1. 검색할 게시글 번호 추출
-	String seq = request.getParameter("seq");
-
-	// 2. DB 연동 처리
-	BoardVO vo = new BoardVO();
-	vo.setSeq(Integer.parseInt(seq));
-	BoardDAO boardDAO = new BoardDAO();
-	BoardVO board = boardDAO.getBoard(vo);
-
-	// 3. 응답 화면 구성
-%>
 <!DOCTYPE html>
 <html>
 <head>
