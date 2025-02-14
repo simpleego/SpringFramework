@@ -263,27 +263,46 @@ getBoardList.jsp 파일에서는 사용자가 입력한 검색 관련 정보를 
 <title>로그인</title>
 </head>
 <body>
-<center>
-<h1>로그인</h1>
-<hr>
-<form action="login_proc.jsp" method="post">
-<table border="1" cellpadding="0" cellspacing="0">
-	<tr>
-		<td bgcolor="orange">아이디</td>
-		<td><input type="text" name="id"></td>
-	</tr>
-	<tr>
-		<td bgcolor="orange">비밀번호</td>
-		<td><input type="password" name="password"></td>
-	</tr>
-	<tr>
-		<td colspan="2" align="center">
-			<input type="submit" value="로그인" />
-		</td>
-	</tr>	
-</table>
-</form>
-</center>
+	<center>
+		<h1>글 상세</h1>
+		<a href="logout_proc.jsp">Log-out</a>
+		<hr>
+		<form action="updateBoard_proc.jsp" method="post">
+			<input name="seq" type="hidden" value="<%=board.getSeq()%>" />
+			<table border="1" cellpadding="0" cellspacing="0">
+				<tr>
+					<td bgcolor="orange" width="70">제목</td>
+					<td align="left"><input name="title" type="text"
+						value="<%=board.getTitle()%>" /></td>
+				</tr>
+				<tr>
+					<td bgcolor="orange">작성자</td>
+					<td align="left"><%=board.getWriter()%></td>
+				</tr>
+				<tr>
+					<td bgcolor="orange">내용</td>
+					<td align="left"><textarea name="content" cols="40" rows="10">
+						<%=board.getContent()%></textarea></td>
+				</tr>
+				<tr>
+					<td bgcolor="orange">등록일</td>
+					<td align="left"><%=board.getRegDate()%></td>
+				</tr>
+				<tr>
+					<td bgcolor="orange">조회수</td>
+					<td align="left"><%=board.getCnt()%></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit"
+						value="글 수정" /></td>
+				</tr>
+			</table>
+		</form>
+		<hr>
+		<a href="insertBoard.html">글등록</a>&nbsp;&nbsp;&nbsp; 
+		<a href="deleteBoard_proc.jsp?seq=<%=board.getSeq()%>">글삭제</a>&nbsp;&nbsp;&nbsp;
+		<a href="getBoardList.jsp">글목록</a>
+	</center>
 </body>
 </html>
 ```
