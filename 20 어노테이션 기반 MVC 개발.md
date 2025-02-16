@@ -212,11 +212,11 @@ insertBoard() 메소드의 매개변수로 사용자가 입력한 값을 매핑�
     
 ![image](https://github.com/user-attachments/assets/724e8d8a-3d34-4a11-968a-9546792ff3e0)   
      
-1. 서블릿 컨테이너는 클라이언트의 HTTP 요청이 서버에 전달되는 순간 
-2. HttpServletRequest 객체를 생성하고 HTTP 프로토콜에 설정된 모든 정보를 추출하여 HttpServletRequest 객체에 저장한다.  
-3. 그리고 이 HttpServletRequest 객체를 Service() 메소드를 호출할 때, 인자로 전달해준다.  
+**1. 서블릿 컨테이너는 클라이언트의 HTTP 요청이 서버에 전달되는 순간**  
+**2. HttpServletRequest 객체를 생성하고 HTTP 프로토콜에 설정된 모든 정보를 추출하여 HttpServletRequest 객체에 저장한다.**  
+**3. 그리고 이 HttpServletRequest 객체를 Service() 메소드를 호출할 때, 인자로 전달해준다.**  
 
-Service() 는 스프링 컨테이너에서 만든 DispatcherServlet이 실행하는 메소드이다.  
+Service()는 스프링 컨테이너에서 만든 DispatcherServlet이 실행하는 메소드이다.  
 DispatcherServlet은 해당 request의 getParameter()를 이용하여 값을 저장하고 이를 커멘드 객체에 저장시킨다.  
 이때 커멘드 객체의 자료형 기준은 @RequestMapping이 있는 메소드의 매개변수를 기준으로 만들고 할당해주는 것이다.  
   
@@ -234,7 +234,7 @@ HttpServletRequest 와 HttpServletResponse 객체가 필요한데, 이 객체들
 insertBoardController가 가지고 있는 insertBoard() 메소드를 실행한다. 
 이때 매개변수에 해당하는 BoardVO 객체를 스프링 컨테이너가 생성하여 전달한다.   
 
-[사진]
+![image](https://github.com/user-attachments/assets/1b4e7ea5-11f5-4718-8516-d45014a5690b)
 
 1. 매개변수에 해당하는 BoardVO 객체를 생성하고,  
 2. 사용자가 입력한 파라미터 값들을 추출하여 BoardVO 객체의 Setter 메소드를 통해 저장한다.  
