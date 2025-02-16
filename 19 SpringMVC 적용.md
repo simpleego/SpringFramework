@@ -151,8 +151,6 @@ ModelAndView 는 클래스 이름에서 알 수 있듯이 Model과 View 정보�
 DispatcherServlet은 Controller가 리턴한 ModelAndView 객체에서 Model 정보를 추출한 다음   
 HttpServletRequest 객체에 검색 결과에 해당하는 Model 정보를 저장하여 JSP로 포워딩한다.  
 따라서 JSP 파일에서는 검색 결과를 세션이 아닌 HttpServletRequest로 부터 꺼내 쓸 수 있다.  
-
-![image](https://github.com/user-attachments/assets/24711d9a-5b28-4ff7-a94d-b6a955f9e9f9)
    
 ## 3.2. HandlerMapping 등록  
 이제 GetBoardListController 객체가 ```/getBoardList.do```요청에 동작할 수 있도록,   
@@ -181,6 +179,9 @@ SimpleUrlHandlerMapping에 매핑 정보를 추가하면 된다.
 
 </beans>
 ```
+--- 
+![image](https://github.com/user-attachments/assets/24711d9a-5b28-4ff7-a94d-b6a955f9e9f9)
+--- 
 1. 클라이언트로부터 ```/getBoardList.do```요청을 전송하면 DispatcherServlet이 요청을 받고, 
 2. SimpleUrlHandlerMapping을 통해 요청을 처리할 GetBoardListController를 검색한다.  
 3. DispatcherServlet은 검색된 GetBoardListController를 실행하여 요청을 처리한다.
