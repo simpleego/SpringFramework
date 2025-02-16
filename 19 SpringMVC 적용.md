@@ -489,8 +489,6 @@ ViewResolver 역시 여러가지가 있지만 JSP를 View로 사용하는 경우
 먼저 ```/WEB-INF/board```폴더를 생성하고,  
 기존에 사용했던 목록 화면과 상세 화면에 해당하는 getBoardList.jsp와 getBoard.jsp 파일을 이동시킨다.  
    
-[사진]     
-   
 WEB-INF 폴더는 절대 브라우저에서 접근할 수 없다.  
 이제 WEB-INF 폴더로 이동한 JSP 파일들은 절대 클라이언트 브라우저에서 접근할 수 없다.  
 하지만 InternalResourceViewResolver를 다음과 같이 설정하면 WEB-INF 폴더에 있는 JSP 파일을 View 화면으로 사용할 수 있다.  
