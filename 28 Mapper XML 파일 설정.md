@@ -21,7 +21,9 @@ SQL Mapper는 ```<mapper>```를 루트 엘리먼트로 가지는 XML 파일이�
     
 Mapper 파일 구조를 살펴보면 가장 먼저 DTD 선언이 등장하고, 그 밑에 ```<mapper>``` 루트 엘리먼트가 선언된다.        
 ```<mapper>``` 엘리먼트는 namespace 속성을 가지는데, 이 네임스페이스를 이용하여 더 쉽게 유일한 SQL 아이디를 만들 수 있다.     
-네임스페이스가 지정된 Mapper SQL을 DAO 클래스에서 참조할 때는 네임스페이스와 SQL의 아이디를 결합하여 참조해야 한다.      
+네임스페이스가 지정된 Mapper SQL을 DAO 클래스에서 참조할 때는 네임스페이스와 SQL의 아이디를 결합하여 참조해야 한다.  
+
+![image](https://github.com/user-attachments/assets/2e38c0a3-d594-4c9c-b55d-be32cdf4bf41)
 
 **Mapper XML**
 ```
