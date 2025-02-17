@@ -2,9 +2,9 @@
 =======================
 # 1. SQL MapperXML 기본 설정  
 ## 1.1. Mybatis 구조  
-  
-[사진]  
-  
+
+![image](https://github.com/user-attachments/assets/321ae58d-2e69-482d-97e6-9cb3143f9ebc)
+    
 우선 SqlMapConfig.xml 파일은 Mybatis 메인 환경 설정 파일이다. 
 Mybatis는 이 파일을 읽어 들여 어떤 DBMS와 커넥션을 맺을지, 어떤 SQL Mapper XML 파일들이 등록되어 있는지 알 수 있다.     
    
