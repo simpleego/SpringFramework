@@ -17,8 +17,8 @@ Mybatis는 SqlMap.xml 파일에 등록된 각 SQL 명령어들을 Map 구조로 
 Mybatis 프레임워크에서 가장 중요한 파일은 SQL 명령어들이 저장되는 SQL Mapper XML파일이다.   
 SQL Mapper는 ```<mapper>```를 루트 엘리먼트로 가지는 XML 파일이다.  
      
-[사진]      
-      
+![image](https://github.com/user-attachments/assets/40076761-e23a-47cc-994c-4949e31b922b)
+    
 Mapper 파일 구조를 살펴보면 가장 먼저 DTD 선언이 등장하고, 그 밑에 ```<mapper>``` 루트 엘리먼트가 선언된다.        
 ```<mapper>``` 엘리먼트는 namespace 속성을 가지는데, 이 네임스페이스를 이용하여 더 쉽게 유일한 SQL 아이디를 만들 수 있다.     
 네임스페이스가 지정된 Mapper SQL을 DAO 클래스에서 참조할 때는 네임스페이스와 SQL의 아이디를 결합하여 참조해야 한다.      
