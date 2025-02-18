@@ -835,15 +835,127 @@ Controller를 구성하는 클래스를 모두 개발하고 나면, 너무나 �
 프레임에서 DispatcherSerlvet을 제공할 수 있는 것이다.  
 
 ## 4.4 EL/JSTL 이용한 JSP 화면처리
+우리가 Model 1 아키텍처를 Model 2, 즉 MVC로 변환했던 결정적인 이유는 JSP 파일에서 Controller 로직에 해당하는 자바 코드를 제거하기 위해서였다. 그런데 MVC 아키텍처가 적용된 BoardWeb 프로젝트에서 상세 화면과 목록에 해당하는 getBoardList.jsp와 getBoard.jsp 파일을 보면 여전히 자바코드가 남아있다. 
+
+사실 Controller 로직은 사용사 입력정보 추출, DB 연동처리, 화면 내비게이션과 같은 자바 코드를 의미하기 때문에 현재 JSP 파일에 남아있는 자바 코드는 Controller로직은 아니다. 만일 이런 자바 코드 조차도 JSP파일에서 제거하고 싶다면, JSP에 제공하는 EL과 JSTL를 이용하면 된다. 지금부터 EL과 JSTL을 이용하여 JSP의 자바코드를 제거해보자. 
+
+## 상세화면(getBoard.jsp)수정
+```java
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>글 상세</title>
+</head>
+<body>
+<center>
+<h1>글 상세</h1>
+<a href="logout_proc.jsp">Log-out</a>
+<hr>
+<form action="updateBoard.do" method="post">
+<input name="seq" type="hidden" value="${board.seq}">
+	<table border="1" cellpadding="0" cellspacing="0" width="700">
+		<tr>
+			<td bgcolor="orange" width="70">제목</td>
+			<td align="left"><input name="title" type="text" value="${board.title}"/></td>
+		</tr>
+		<tr>
+			<td bgcolor="orange" >작성자</td>
+			<td align="left">${board.writer}</td>
+		</tr>
+		<tr>
+			<td bgcolor="orange">내용</td>
+			<td align="left">
+				<textarea name="content" cols="40" rows="10">
+					${board.content}
+				</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="orange" >등록일</td>
+			<td align="left">${board.regDate}</td>
+		</tr>
+		<tr>
+			<td bgcolor="orange" >조회수</td>
+			<td align="left">${board.cnt}</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="글 수정"/>
+			</td>
+		</tr>
+	</table>
+</form>
+<hr>
+<a href="insertBoard.jsp">글 등록</a>&nbsp;&nbsp;&nbsp;
+<a href="deleteBoard.do?seq=${board.seq}">글 삭제</a>&nbsp;&nbsp;&nbsp;
+<a href="getBoardList.do">글 목록</a>
+</center>
+</body>
+</html>
 ```
-<c:forEach items="${boardList }" var="board">
-	<tr>
-		<td>${board.seq }</td>
-		<td align="left"><a href="getBoard.do?seq=${board.seq }">
-				${board.title }</a></td>
-		<td>${board.writer }</td>
-		<td><fmt:formatDate value="${board.regDate }" pattern="yyyy-MM-dd"/></td>
-		<td>${board.cnt }</td>
-	</tr>
-</c:forEach>
+
+가장 먼저 눈에 띄는 것은 BoardVO와 BoardDAO 클래스에 대한 import 선언이 사라진 것이다. 그리고 세션에 저장된 BoardVO 객체를 꺼내는 자바 코드도 삭제되었다. 그리고 EL 표현식을 이용하여 세션에  Board라는 이름으로 저장된 BoardVO 객체의 값들을 "${}"구문을 이용하여 출력하고 있다. 이렇게 EL만 이용해도 자바 코드 없는 상세 화면을 구성할 수 있다.
+
+## 글 목록 화면(getBoardList) 수정
+
+게시글 목록을 출력하는 getBoardList.jsp 파일은 EL과 함께 for루프로 처리하기 위한 JSTL도 같이 사용해야 한다.
+
+```java
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri = "http://java.sun.com/jstl/core_rt" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>글목록</title>
+</head>
+<body>
+<center>
+<h1>글목록</h1>
+<h3>테스트님 환영합니다...<a href="logout.do">Lod-out</a></h3>
+
+<!-- 검색시작 -->
+<form action="getBoardList.jsp" method="post">
+	<table border="1" cellpadding="0" cellspacing="0" width="700">
+		<tr>
+			<td align="right">
+				<select name="searchCondition">
+					<option value="TITLE">제목
+					<option value="CONTENT">내용
+				</select>
+				<input name="searchKeyword" type="text"/>
+				<input type="submit" value="검색"/>
+			</td>
+		</tr>
+	</table>
+</form>
+
+<table border="1" cellpadding="0" cellspacing="0" width="700">
+<tr>
+	<th bgcolor="orange" width="100">번호</th>
+	<th bgcolor="orange" width="100">제목</th>
+	<th bgcolor="orange" width="100">작성자</th>
+	<th bgcolor="orange" width="100">등록일</th>
+	<th bgcolor="orange" width="100">조회수</th>
+</tr>
+<c:forEach items="${boardList}" var="board">
+<tr>
+	<td>${board.seq}</td>
+	<td align="left"><a href="getBoard.do?seq=${board.seq}">${board.title}</a></td>
+	<td>${board.writer}</td>
+	<td>${board.regdate}</td>
+	<td>${board.cnt}</td>
+</tr>
+</c:forEach> 
+
+</table>
+</center>
+</body>
+</html>
 ```
+
+getBoard.jsp 파일과 동일하게 import 선언은 모두 삭제되었다. 그리고 JSTL 사용을 위한 taglib 지시문이 추가되었으며, 글 목록을 반복해서 출력하기 위해 사용했던 for 루프는 JSTL에서 제공하는 <c:forEach> 태그로 대체되었다. 수정된 모든 내용을 저장하고 글 목록 화면돠 상세 화면이 모두 잘 실행되는지 확인해본다.
