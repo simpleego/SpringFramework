@@ -13,7 +13,7 @@ SPringMVC도 스프링 설정 파일에 HandlerMapping, Controller, ViewResolver
 ```<context:component-scan>```엘리먼트를 사용하여 어노테이션을 스캔하여 생성하도록 설정해주자  
 
 **presentation-layer.xml**
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -35,7 +35,7 @@ SPringMVC도 스프링 설정 파일에 HandlerMapping, Controller, ViewResolver
 ```@Controller```를 사용하게 되면 큰 장점이 하나 있는데         
 기존 Controller 클래스들은 Controller 인터페이스를 구현하여 Controller 클래스 기준을 충족 시켜야 한다.     
 **어노테이션 사용전 InsertBoardController**  
-```
+```java
 package com.springbook.view.board;
 
 import javax.servlet.http.HttpServletRequest;
@@ -77,7 +77,7 @@ public class InsertBoardController implements Controller {
 그렇기에 복잡한 조건을 충족시켜야 한다는 단점이 있기에 우리는 ```@Controller```를 사용해 이를 간략히 작성할 것이다.  
    
 **InsertBoardController**
-```
+```java
 package com.springbook.view.board;
 
 import javax.servlet.http.HttpServletRequest;
@@ -125,7 +125,7 @@ public class InsertBoardController  {
 ```   
   
 **InsertBoardController**
-```
+```java
 package com.springbook.view.board;
 
 import javax.servlet.http.HttpServletRequest;
