@@ -8,6 +8,7 @@ DispatcherServlet 클래스 하나로 Controller 기능을 구현했다.
 
 --- 
 **DispatcherServlet**
+
 ```java
 package com.springbook.view.controller;
 
@@ -200,6 +201,7 @@ DispatcherServlet 클래스가 이렇게 복잡하게 구현되어 있으면 특
     
 ***
 # 2. MVC 프레임워크 구현
+
 ## 2.1. Controller 인터페이스 작성
 Controller를 구성하는 요소 중에서 DispatcherServlet은 클라이언트의 요청을 가장 먼저 받아들이는 Front Controller 이다.  
 하지만 클라이언트의 요청을 처리하기 위해 DispatcherServlet이 하는 일은 거의 없으며,    
@@ -221,12 +223,14 @@ public interface Controller {
 }
 ```
 ## 2.2. LoginController 
+
 Controller 인터페이스를 구현한 LoginController 클래스를 만들고
 이를 구현하는 Controller 클래스를 작성해주면 된다.   
 이때 DispatcherServlet 클래스에서 ```/login.do```에 해당하는 소스를 복사하여 구현해보자   
 
 **LoginController**
-```
+
+```java
 package com.springbook.view.controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -278,6 +282,7 @@ HandlerMapping 객체는 DispatcherSerlvet이 사용하는 객체이다.
 따라서 DisaptcherServlet이 생성되고 init()메소드가 호출될 때 단 한번 생성된다.  
 
 **HandlerMapping**
+
 ```java
 package com.springbook.view.controller;
 
@@ -310,6 +315,7 @@ ViewResolver 클래스는 Controller가 리턴한 View 이름에 접두사와 �
 ViewResolver도 HandlerMapping과 마찬가지로 DispatcherServlet의 init()메소드가 호출될 때 생성된다.      
    
 **ViewResolve**
+
 ```java
 package com.springbook.view.controller;
 
@@ -343,6 +349,7 @@ DispatcherSerlvet은 FrontController 기능의 클래스로서 Controller 구성
 그래야 나중에 구체적인 Controller 클래스 구현에서 소스를 재사용할 수 있다.   
 
 **DispatcherSerlvet**
+
 ```java
 package com.springbook.view.controller;
 
@@ -438,6 +445,7 @@ Controller 인터페이스를 구현한 GetBoardListController 클래스를 작�
 이때 다른 폴더에 복사했던 DispatcherSerlvet에서 글 목록 검색 관련 소스를 복사하여 쉽게 구현할 수 있다.  
 
 **GetBoardListController**
+
 ```java
 package com.springbook.view.controller;
 
@@ -503,6 +511,7 @@ Controller 인터페이스를 구현한 GetBoardController 클래스를 작성�
 이때 DispatcherServlet에서 글 상세 조회 관련 소스를 복사하여 handleRequest() 메소드를 구현한다.    
   
 **GetBoardController**
+
 ```java
 package com.springbook.view.controller;
 
@@ -541,6 +550,7 @@ GetBoardController 역시 DispatcherSerlvet 소스를 복사해서 구현했으�
 GetBoardController 객체도 HanlderMapping 클래스에 등록한다.  
       
 **HandlerMapping**
+
 ```java
 package com.springbook.view.controller;
 
@@ -568,6 +578,7 @@ public class HandlerMapping {
 DispatcherServlet에서 글 등록 관련 소스를 복사하여 InsertBoardController 클래스를 작성한다.  
   
 **inserBoardController**
+
 ```java
 package com.springbook.view.controller;
 
@@ -609,6 +620,7 @@ insertBoardController 역시 DispatcherServlet 소스를 복사해서 구현했�
 InsertBoardController 객체를 HandlerMapping 클래스에 등록하고 글 등록을 실행해본다.  
    
 **HandlerMapping**
+
 ```java
 package com.springbook.view.controller;
 
@@ -635,6 +647,7 @@ public class HandlerMapping {
 DispatcherServlet에서 글 수정 관련 소스를 복사하여 UpdateBoardController 클래스를 작성한다.  
    
 **UpdateBoardController**
+
 ```java
 package com.springbook.view.controller;
 
@@ -676,6 +689,7 @@ UpdateboardController 역시 글 수정 성공 후에 글 목록을 다시 검�
 작성된 UpdateBoardController 객체를 HandelrMapping에 등록한다.  
 
 **HandlerMapping**
+
 ```java
 package com.springbook.view.controller;
 
@@ -705,6 +719,7 @@ public class HandlerMapping {
 DispatcherServlet에서 글 삭제 관련 소스를 복사하여 DeleteBoardController 클래스를 작성한다.  
 
 **DeleteBoardController**
+
 ```java
 package com.springbook.view.controller;
 
@@ -740,6 +755,7 @@ public class DeleteBoardController implements Controller {
 작성된 DeleteBoardController 객체를 HandlerMapping에 등록한다.  
 
 **HandlerMapping**
+
 ```java
 package com.springbook.view.controller;
 
@@ -770,6 +786,7 @@ public class HandlerMapping {
 DispatcherServlet에서 로그아웃 관련 소스를 복사하여 LogoutController 클래스를 작성한다.  
    
 **LogoutController**
+
 ```java
 package com.springbook.view.controller;
 
@@ -792,7 +809,8 @@ public String HandlerRequset(HttpServletRequest request, HttpServletResponse res
 ```
 LogoutController 객체 역시 HandlerMapping에 등록한다.  
    
-**HandlerMapping**   
+**HandlerMapping**  
+
 ```java
 package com.springbook.view.controller;
 
@@ -840,6 +858,7 @@ Controller를 구성하는 클래스를 모두 개발하고 나면, 너무나 �
 사실 Controller 로직은 사용사 입력정보 추출, DB 연동처리, 화면 내비게이션과 같은 자바 코드를 의미하기 때문에 현재 JSP 파일에 남아있는 자바 코드는 Controller로직은 아니다. 만일 이런 자바 코드 조차도 JSP파일에서 제거하고 싶다면, JSP에 제공하는 EL과 JSTL를 이용하면 된다. 지금부터 EL과 JSTL을 이용하여 JSP의 자바코드를 제거해보자. 
 
 ## 상세화면(getBoard.jsp)수정
+
 ```java
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
