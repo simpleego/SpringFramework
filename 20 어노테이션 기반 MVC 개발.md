@@ -35,6 +35,7 @@ SPringMVC도 스프링 설정 파일에 HandlerMapping, Controller, ViewResolver
 ```@Controller```를 사용하게 되면 큰 장점이 하나 있는데         
 기존 Controller 클래스들은 Controller 인터페이스를 구현하여 Controller 클래스 기준을 충족 시켜야 한다.     
 **어노테이션 사용전 InsertBoardController**  
+
 ```java
 package com.springbook.view.board;
 
@@ -125,6 +126,7 @@ public class InsertBoardController  {
 ```   
   
 **InsertBoardController**
+
 ```java
 package com.springbook.view.board;
 
@@ -180,7 +182,8 @@ public class InsertBoardController{
 InsertBoardController 클래스의 insertBoard() 메소드를 Command 객체를 이용하여 구현한다.  
    
 **InsertBoardController**
-```  
+
+```java
 package com.springbook.view.board;
 
 import javax.servlet.http.HttpServletRequest;
