@@ -8,7 +8,7 @@ DispatcherServlet 클래스 하나로 Controller 기능을 구현했다.
 
 --- 
 **DispatcherServlet**
-```
+```java
 package com.springbook.view.controller;
 
 import java.io.IOException;
@@ -210,7 +210,7 @@ Controller를 구성하는 요소 중에서 DispatcherServlet은 클라이언트
 이때 어떤 Controller 객체가 검색되더라도 같은 코드로 실행하려면 모든 Controller의 최상위 인터페이스가 필요하다.  
    
 **Controller**
-```
+```java
 package com.springbook.view.controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -278,7 +278,7 @@ HandlerMapping 객체는 DispatcherSerlvet이 사용하는 객체이다.
 따라서 DisaptcherServlet이 생성되고 init()메소드가 호출될 때 단 한번 생성된다.  
 
 **HandlerMapping**
-```
+```java
 package com.springbook.view.controller;
 
 import java.util.HashMap;
@@ -310,7 +310,7 @@ ViewResolver 클래스는 Controller가 리턴한 View 이름에 접두사와 �
 ViewResolver도 HandlerMapping과 마찬가지로 DispatcherServlet의 init()메소드가 호출될 때 생성된다.      
    
 **ViewResolve**
-```
+```java
 package com.springbook.view.controller;
 
 public class ViewResolve {
@@ -343,7 +343,7 @@ DispatcherSerlvet은 FrontController 기능의 클래스로서 Controller 구성
 그래야 나중에 구체적인 Controller 클래스 구현에서 소스를 재사용할 수 있다.   
 
 **DispatcherSerlvet**
-```
+```java
 package com.springbook.view.controller;
 
 import java.io.IOException;
@@ -438,7 +438,7 @@ Controller 인터페이스를 구현한 GetBoardListController 클래스를 작�
 이때 다른 폴더에 복사했던 DispatcherSerlvet에서 글 목록 검색 관련 소스를 복사하여 쉽게 구현할 수 있다.  
 
 **GetBoardListController**
-```
+```java
 package com.springbook.view.controller;
 
 import java.util.List;
@@ -474,7 +474,7 @@ DispatcherServlet 소스를 복사해서 구현했으므로 기본 소스는 같
 이제 GetBoardListController 객체를 HadlerMapping에 등록하면 된다.  
     
 **HandlerMapping**
-```
+```java
 package com.springbook.view.controller;
 
 import java.util.HashMap;
@@ -503,7 +503,7 @@ Controller 인터페이스를 구현한 GetBoardController 클래스를 작성�
 이때 DispatcherServlet에서 글 상세 조회 관련 소스를 복사하여 handleRequest() 메소드를 구현한다.    
   
 **GetBoardController**
-```
+```java
 package com.springbook.view.controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -541,7 +541,7 @@ GetBoardController 역시 DispatcherSerlvet 소스를 복사해서 구현했으�
 GetBoardController 객체도 HanlderMapping 클래스에 등록한다.  
       
 **HandlerMapping**
-```
+```java
 package com.springbook.view.controller;
 
 import java.util.HashMap;
@@ -568,7 +568,7 @@ public class HandlerMapping {
 DispatcherServlet에서 글 등록 관련 소스를 복사하여 InsertBoardController 클래스를 작성한다.  
   
 **inserBoardController**
-```
+```java
 package com.springbook.view.controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -609,7 +609,7 @@ insertBoardController 역시 DispatcherServlet 소스를 복사해서 구현했�
 InsertBoardController 객체를 HandlerMapping 클래스에 등록하고 글 등록을 실행해본다.  
    
 **HandlerMapping**
-```
+```java
 package com.springbook.view.controller;
 
 import java.util.HashMap;
@@ -635,7 +635,7 @@ public class HandlerMapping {
 DispatcherServlet에서 글 수정 관련 소스를 복사하여 UpdateBoardController 클래스를 작성한다.  
    
 **UpdateBoardController**
-```
+```java
 package com.springbook.view.controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -676,7 +676,7 @@ UpdateboardController 역시 글 수정 성공 후에 글 목록을 다시 검�
 작성된 UpdateBoardController 객체를 HandelrMapping에 등록한다.  
 
 **HandlerMapping**
-```
+```java
 package com.springbook.view.controller;
 
 import java.util.HashMap;
@@ -705,7 +705,7 @@ public class HandlerMapping {
 DispatcherServlet에서 글 삭제 관련 소스를 복사하여 DeleteBoardController 클래스를 작성한다.  
 
 **DeleteBoardController**
-```
+```java
 package com.springbook.view.controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -740,7 +740,7 @@ public class DeleteBoardController implements Controller {
 작성된 DeleteBoardController 객체를 HandlerMapping에 등록한다.  
 
 **HandlerMapping**
-```
+```java
 package com.springbook.view.controller;
 
 import java.util.HashMap;
@@ -770,7 +770,7 @@ public class HandlerMapping {
 DispatcherServlet에서 로그아웃 관련 소스를 복사하여 LogoutController 클래스를 작성한다.  
    
 **LogoutController**
-```
+```java
 package com.springbook.view.controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -793,7 +793,7 @@ public String HandlerRequset(HttpServletRequest request, HttpServletResponse res
 LogoutController 객체 역시 HandlerMapping에 등록한다.  
    
 **HandlerMapping**   
-```
+```java
 package com.springbook.view.controller;
 
 import java.util.HashMap;
