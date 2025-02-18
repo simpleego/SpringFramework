@@ -832,4 +832,18 @@ Controller를 구성하는 클래스를 모두 개발하고 나면, 너무나 �
 이때 InsertUserController 클래스를 추가로 작성하고, HandlerMapping에 InsertuserController 객체를 등록하면 된다.     
 이 과정에서 DispatcherServlet 클래스는 전혀 수정할 필요가 없다.        
 이렇게 기능 추가나 수정에 대해서 DispatcherServlet을 수정하지 않도록 해야    
-프레임에서 DispatcherSerlvet을 제공할 수 있는 것이다.    
+프레임에서 DispatcherSerlvet을 제공할 수 있는 것이다.  
+
+## 4.4 EL/JSTL 이용한 JSP 화면처리
+```
+<c:forEach items="${boardList }" var="board">
+	<tr>
+		<td>${board.seq }</td>
+		<td align="left"><a href="getBoard.do?seq=${board.seq }">
+				${board.title }</a></td>
+		<td>${board.writer }</td>
+		<td><fmt:formatDate value="${board.regDate }" pattern="yyyy-MM-dd"/></td>
+		<td>${board.cnt }</td>
+	</tr>
+</c:forEach>
+```
