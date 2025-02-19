@@ -100,7 +100,10 @@ SELECT 구문은 ```<select>``` 엘리먼트를 사용하는 식이다.
 ### (2) parameterType 속성  
 Mapper 파일에 등록된 SQL을 실행하려면 SQL 실행에 필요한 데이터를 외부로부터 받아야한다.  
 이때 사용하는 속성이 parameterType 속성이다.    
-parameterType 속성값으로는 일반적으로 기본형이나 VO 형태의 클래스를 지정한다.    
+parameterType 속성값으로는 일반적으로 기본형이나 VO 형태의 클래스를 지정한다.   
+
+![image](https://github.com/user-attachments/assets/3b11c6e4-df74-4be8-9bcf-9ed18956c68f)
+
 ```
 <insert id="insertBoard" parameterType="com.springbook.biz.board.BoardVO">
   insert into board(seq, title, writer, content)
