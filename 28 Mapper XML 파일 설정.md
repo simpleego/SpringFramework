@@ -125,6 +125,7 @@ parameterType 속성값으로는 일반적으로 기본형이나 VO 형태의 �
   select * form board where seq = #{seq}
 </select>
 ```
+![image](https://github.com/user-attachments/assets/3fb4552a-2c8b-4e76-90f9-a7b82ed456a8)
 
 alias는 import 와 비슷하게 클래스의 전체경로를 사용하는 것을 줄이기 위해 사용한다.         
   
@@ -136,6 +137,8 @@ parameterType으로 지정된 클래스에는 사용자가 입력한 값들을 �
 검색 관련 SQL 구문이 실행되면 ResultSet이 리턴되며,  
 ResultSet에 저장된 검색 결과를 어떤 자바 객체에 매핑할지 지정해야 하는데,  
 이때 사용하는 것이 resultType 속성이다. (즉 어떤 자료형으로 반환할지)   
+
+![image](https://github.com/user-attachments/assets/4f28b471-3cce-4744-a02b-eb2a5f9a1b48)
 
 **sql-map-config.xml**
 ```xml
