@@ -26,7 +26,7 @@ org.mybatis.spring.SqlSessionTemplate
 스프링과 Mybatis 연동에 필요한 라이브러리들을 내려 받으려면 pom.xml 파일에 ```<dependency>```를 추가한다.  
    
 **pom.xml**  
-```
+```xml
 ~ 생략 ~
 		<!-- Mybatis -->
 		<dependency>
@@ -46,19 +46,19 @@ mybatis-3.3.1.jar 파일은 순수하게 Mybatis 관련 라이브러리고,
 mybatis-spring-1.2.4.jar 파일은 Mybatis와 스프링을 연동하기 위해 사용하는 라이브러리다.     
      
 **주의 사항**   
-```
-		<!-- Ibatis -->
-		<dependency>
-			<groupId>org.apache.ibatis</groupId>
-			<artifactId>ibatis-core</artifactId>
-			<version>3.0</version>
-		</dependency>
-		<!-- Mybatis Spring-->
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis-spring</artifactId>
-			<version>1.2.4</version>
-		</dependency>
+```xml
+<!-- Ibatis -->
+<dependency>
+	<groupId>org.apache.ibatis</groupId>
+	<artifactId>ibatis-core</artifactId>
+	<version>3.0</version>
+</dependency>
+<!-- Mybatis Spring-->
+<dependency>
+	<groupId>org.mybatis</groupId>
+	<artifactId>mybatis-spring</artifactId>
+	<version>1.2.4</version>
+</dependency>
 ```
 위 두가지를 같이 사용할 경울 충돌이 일어나서 오류를 범하게 된다.    
 그래서 이 두가지를 같이 사용하지 안하도록 조심하자   
@@ -72,7 +72,7 @@ SQL 명령어들이 저장되어 있는 Mapper 파일이 필요하다.
 이 중에서 Mybatis 메인 환경설정 파일인 ```sql-map-config.xml```을 열어서 데이터소스 관련 설정을 삭제한다.    
    
 **sql-map-config.xml**
-```
+```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
@@ -97,7 +97,7 @@ Mybatis 설정이 아닌 스프링 설정 파일에서 제공하는 것이 맞�
 그래야 SqlSessionFactoryBean 객체로부터 DB 연동 구현에 사용한 SqlSession 객체를 얻을 수 있다.  
   
 **applicationContext.xml**
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -161,7 +161,7 @@ Mybatis를 이용하여 DAO 클래스를 구현하는 방법은 2가지이다.
 이 중에 첫 번째는 SqlSessionDaoSupport 클래스를 상속하여 구현하는 것이다.  
 
 **BoardDAOMybatis**
-```
+```java
 package com.springbook.biz.board.impl;
 
 
@@ -216,7 +216,7 @@ SqlSessionDaoSupport 클래스를 상속한 후에 가장 먼저 한 작업이 s
 이렇게 해야 SqlSessionDaoSupport 클래스로부터 상속된 getSqlSession() 메소드를 호출하여 SqlSession 객체를 리턴받을 수 있다.  
 이제 SqlSession 객체의 CRUD 관련 메소드를 이용하여 DB 연동을 처리하면 된다.  
 
-```
+```java
 public void insertBoard(BoardVO vo){
 	System.out.println("===> Mybatis로 insertBoard() 기능 처리");
 	getSqlSession().insert("BoardDAO.insertBoard", vo);
@@ -229,7 +229,7 @@ Mybatis를 이용하여 DAO 클래스를 구현하는 2번재 방법은 SqlSessi
 스프링 설정 파일에서 SqlSessionTemplate 클래스를 SqlSesionFactoryBean 아래에 ```<bean>``` 등록한다.    
     
 **applicationContext.xml**
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -300,7 +300,7 @@ Mybatis를 이용하여 DAO 클래스를 구현하는 2번재 방법은 SqlSessi
 ```@Autowired```를 이용하여 의존성 주입 처리하면 SqlSessionTemplate 객체로 DB 연동 로직을 처리할 수 있다.  
   
 **BoardDAOMybatis**
-```
+```java
 package com.springbook.biz.board.impl;
 
 import java.util.List;
@@ -348,7 +348,7 @@ BoardDAOMybatis 객체를 의존성 주입할 수 있도록
 BoardServiceImpl 클래스를 다음과 같이 수정하고 테스트 클라이언트 프로그램을 실행하여 결과를 확인한다.  
     
 **BoardServiceImpl**
-```
+```java
 package com.springbook.biz.board.impl;
 
 import java.util.List;
@@ -399,7 +399,7 @@ Dynamic SQL을 사용하면 조건에 따라 다양한 쿼리를 데이터베이
 만약 현재 상태에서 검색 기능을 추가한다고 하면 우선 다음과 같이 2개의 검색 관련 쿼리가 필요할 것이다.  
    
 **board-mapping.xml**  
-```
+```xml
 ~ 생략 ~
 	<select id="getBoardList_T" resultMap="boardResult">
 		<![CDATA[
@@ -481,7 +481,7 @@ SQL이 추가될 때마다 DAO 클래스도 수정해야 한다.
 Dynamic SQL을 이용하여 이런 문제가 어떻게 해결되는지 테스트 해보자.  
 
 **board-mapping.xml**
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -562,14 +562,14 @@ Dynamic SQL을 이용하여 이런 문제가 어떻게 해결되는지 테스트
 	</select>
  -->	
 </mapper>
-```
+```java
 수정된 SQL 구문을 보면 ```<if>```라는 동적 요소를 사용하여 조건에 따른 분기 처리를 하고 있다.  
 만약 searchCondition 변숫값이 ```TITLE```을 가지고 있으면 제목 검색에 해당하는 조건이 추가되고  
 ```CONTENT```라는 값을 가지고 있으면 내용 검색에 해당하는 조건이 추가되어 실행된다.   
 이렇게 동적 엘리먼트를 이용하여 SQL을 처리할 수 있으므로 검색과 관련된 쿼리는 하나만 있으면 된다.    
     
 **BoardDAOMybatis**
-```
+```java
 package com.springbook.biz.board.impl;
 
 import java.util.List;
