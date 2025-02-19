@@ -26,7 +26,7 @@ Mapper 파일 구조를 살펴보면 가장 먼저 DTD 선언이 등장하고, �
 ![image](https://github.com/user-attachments/assets/2e38c0a3-d594-4c9c-b55d-be32cdf4bf41)
 
 **Mapper XML**
-```
+```xml
 <mapper namespace="BoardDAO">
   <delete id="deleteBoard">
     delete board where seq=#{seq}
@@ -52,7 +52,7 @@ SELECT 구문은 ```<select>``` 엘리먼트를 사용하는 식이다.
 ```<select>``` 엘리먼트에는 parameterType과 resultType 속성을 사용할 수 있다.    
   
 **Mapper XML**
-```
+```xml
 <mapper namespace="BoardDAO">
   <select id="getBoard" parameterType="board" resultType="board">
     select * from board where seq=#{seq}
@@ -64,6 +64,7 @@ SELECT 구문은 ```<select>``` 엘리먼트를 사용하는 식이다.
   </select>
 </mapper>
 ```
+![image](https://github.com/user-attachments/assets/77af9a25-6a7c-49f6-a70e-529eceeff265)
   
 ### (1) id 속성  
 ```<select>``` 엘리먼트에 선언된 id 속성은 필수 속성으로,      
@@ -79,7 +80,7 @@ SELECT 구문은 ```<select>``` 엘리먼트를 사용하는 식이다.
 다음 두 파일에 선언된 ```getTotalCount```라는 아이디는 네임스페이스가 다르므로 다른 아이디로 처리될 수 있다.           
   
 **board-mapping.xml**
-```
+```xml
 <mapper namespace="BoardDAO">
   <select id="getTotalCount" resultType="int">
     select count(*) from board
@@ -88,7 +89,7 @@ SELECT 구문은 ```<select>``` 엘리먼트를 사용하는 식이다.
 ```
   
 **user-mapping.xml**
-```
+```xml
 <mapper namespace="UserDAO">
   <select id="getTotalCount" resultType="int">
     select count(*) from users
@@ -110,13 +111,13 @@ parameterType 속성값으로는 일반적으로 기본형이나 VO 형태의 �
 ```<typeAlias>```의 Alias를 사용하면 설정을 더 간결하게 처리할 수 있다.  
 
 **sql-map-config.xml**
-```
+```xml
 <typeAliases>
   <typeAlias alias="board" type="com.springbook.biz.board.BoardVO"/>
 </typeAliases>
 ```
 **board-mapping.xml**
-```
+```xml
 <select id="getBoard" parameterType="board" resultType="board">
   select * form board where seq = #{seq}
 </select>
@@ -134,13 +135,13 @@ ResultSet에 저장된 검색 결과를 어떤 자바 객체에 매핑할지 지
 이때 사용하는 것이 resultType 속성이다. (즉 어떤 자료형으로 반환할지)   
 
 **sql-map-config.xml**
-```
+```xml
 <typeAliases>
   <typeAlias alias="board" type="com.springbook.biz.board.BoardVO"/>
 </typeAliases>
 ```
 **board-mapping.xml**
-```
+```xml
 <select id="getBoard" parameterType="board" resultType="board">
   select * form board where seq = #{seq}
 </select>
@@ -156,7 +157,7 @@ parameterType 속성과 달리 ```<select>``` 엘리먼트에서 절대 생략�
 ### (4) ```<insert>``` 엘리먼트   
 ```<insert>``` 엘리먼트는 데이터베이스에 데이터를 삽입하는 INSERT 구문을 작성하는 요소이다.     
 **Mapper XML**  
-```
+```xml
 <insert id="insertBoard" parameterType="board">
   insert into board(seq, title, writer, content)
   values(#{seq}, #{title}, #{writer}, #{content})
@@ -165,7 +166,8 @@ parameterType 속성과 달리 ```<select>``` 엘리먼트에서 절대 생략�
 ```<insert>``` 구문은 자식 요소로 ```<selectKey>``` 엘리먼트를 가질 수 있다.  
 대부분 관계형 데이터베이스에서는 기본 키 필드의 자동 생성을 지원하는데,  
 Mybatis에서는 ```<insert>```요소의 자식 요소인 ```<selectKey>```요소를 사용하여 생성된 키를 쉽게 가져올 수 있는 방법을 제공한다.
-```
+
+```xml
 <insert id="insertBoard" parameterType="board">
   <selectKey KeyProperty="seq" resultType="int">
     select board_seq.nextval as seq from dual
@@ -178,8 +180,9 @@ Mybatis에서는 ```<insert>```요소의 자식 요소인 ```<selectKey>```요�
        
 ### (5) ```<update>``` 엘리먼트   
 ```<update>``` 엘리먼트는 데이터를 수정할 때 사용되는 UPDATE 구문을 작성하는 요소이다.  
+
 **Mapper XML**  
-```
+```xml
 <mapper namespace="Board">
 <update id="updateBoard" parameterType="board">
   update board set title=#{title}, content=#{content}
@@ -190,8 +193,9 @@ Mybatis에서는 ```<insert>```요소의 자식 요소인 ```<selectKey>```요�
        
 ### (6) ```<delete>``` 엘리먼트   
 ```<delete>``` 엘리먼트는 데이터를 삭제할 때 사용되는 DELETE 구문을 작성하는 요소이다.     
+
 **Mapper XML**  
-```
+```xml
 <mapper namespace="Board">
 <delete id="deleteBoard" parameterType="board">
   delete board where seq=#{seq}
@@ -213,7 +217,8 @@ Mybatis에서는 ```<insert>```요소의 자식 요소인 ```<selectKey>```요�
 이럴 때 resultMap 속성을 사용하여 처리하면 된다.   
   
 resultMap 속성을 사용하려면 먼저 ```<resultMap>```엘리 먼트를 사용하여 매핑 규칙을 지정해야 한다.  
-```
+
+```xml
 <mapper namespace="Board">
 <resultMap id="boardResult" type="board">
   <id property="seq" column="SEQ" />
@@ -248,7 +253,7 @@ resultMap 속성을 사용하려면 먼저 ```<resultMap>```엘리 먼트를 사
 ]]>
 ```
 **Mapper xml**
-```
+```xml
 <select id="getBoard" resultType="board">
 <![CDATA][
 select * 
@@ -273,7 +278,7 @@ SQL 구문이 조금이라도 복잡해지면 이 둘을 구분하기가 쉽지 
 따라서 SQL은 모두 대문자로 표현하여 좀 더 식별성을 높인다.   
    
 예시)  
-```
+```xml
 <update id="updateBoard">
   update board set
     title = #{title},
@@ -291,7 +296,8 @@ SQL 구문이 조금이라도 복잡해지면 이 둘을 구분하기가 쉽지 
 ```
 지금까지 살펴본 내용들이 모두 반영된 최종 Mapper 파일은 다음과 같다.  
 **board-mapping.xml**
-```
+
+```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -464,10 +470,9 @@ public int delete(String statement, Object parameter) throws SQLException
 다음은 SqlSession 객체를 이용하여 구현한 BoardDAO 클래스의 전체 소스다.  
    
 **BoardDAO**
-```
+
+```java
 package com.springbook.biz.board.impl;
-
-
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
