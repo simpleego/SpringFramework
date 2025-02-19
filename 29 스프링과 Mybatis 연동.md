@@ -424,7 +424,8 @@ Dynamic SQL을 사용하면 조건에 따라 다양한 쿼리를 데이터베이
 이제 DAO 클래스 getBoardList() 메소드에 검색 조건에 따른 분기 처리 로직을 추가한다.  
   
 **BoardDAOMybatis**
-```
+
+```java
 package com.springbook.biz.board.impl;
 
 import java.util.List;
@@ -442,34 +443,29 @@ public class BoardDAOMybatis{
 	private SqlSessionTemplate mybatis;
 
 	public void insertBoard(BoardVO vo) {
-		System.out.println("===> Mybatis�� insertBoard() ��� ó��");
+		System.out.println("===> Mybatis로 insertBoard() 기능 처리");
 		mybatis.insert("BoardDAO.insertBoard", vo);
 	}
-
+	
 	public void updateBoard(BoardVO vo) {
-		System.out.println("===> Mybatis�� updateBoard() ��� ó��");
+		System.out.println("===> Mybatis로 updateBoard() 기능 처리");
 		mybatis.update("BoardDAO.updateBoard", vo);
 	}
-
+	
 	public void deleteBoard(BoardVO vo) {
-		System.out.println("===> Mybatis�� deleteBoard() ��� ó��");
+		System.out.println("===> Mybatis로 deleteBoard() 기능 처리");
 		mybatis.delete("BoardDAO.deleteBoard", vo);
 	}
-
+	
 	public BoardVO getBoard(BoardVO vo) {
-		System.out.println("===> Mybatis�� getBoard() ��� ó��");
+		System.out.println("===> Mybatis로 getBoard() 기능 처리");
 		return (BoardVO) mybatis.selectOne("BoardDAO.getBoard", vo);
 	}
-
+	
 	public List<BoardVO> getBoardList(BoardVO vo) {
-		System.out.println("===> Mybatis�� getBoardList() ��� ó��");
-		if(vo.getSearchCondition().equals("TITLE")) {
-			return mybatis.selectList("BoardDAO.getBoardList_T", vo);
-		} else if(vo.getSearchCondition().equals("CONTENT")) {
-			return mybatis.selectList("BoardDAO.getBoardList_C", vo);
-		} 
-		return null;
-	}
+		System.out.println("===> Mybatis로 getBoardList() 기능 처리");
+		return mybatis.selectList("BoardDAO.getBoardList", vo);
+	}	
 }
 ```
 이제 수정된 파일들을 저장하고 index.jsp 파일을 실행한 후,    
