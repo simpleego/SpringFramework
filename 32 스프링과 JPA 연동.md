@@ -16,20 +16,20 @@ BoardWeb 프로젝트가 JPA 프로젝트로 변경되었으면,
 이제 pom.xml 파일을 수정하여 SpringORM 라이브러리와 하이버네이트 라이브러리를 내려받는다.  
    
 **pom.xml**
-```
-		<!-- spring-ORM -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
-    
-		<!-- JPA, 하이버네이트 -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>5.1.0.Final</version>
-		</dependency>
+```xml
+<!-- spring-ORM -->
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-orm</artifactId>
+	<version>${org.springframework-version}</version>
+</dependency>
+
+<!-- JPA, 하이버네이트 -->
+<dependency>
+	<groupId>org.hibernate</groupId>
+	<artifactId>hibernate-entitymanager</artifactId>
+	<version>5.1.0.Final</version>
+</dependency>
 ```
 내려받기가 마무리되면 Maven Dependencies에서 해당하는 라이브러리를 추가로 확인한다.  
    
@@ -38,7 +38,7 @@ JPA 프로젝트는 반드시 영속성 유닛 설정 정보가 저장된 persis
 하지만 persistence.xml 파일은 JPAProject에 작성된  파일과 같으므르 해당 파일을 복사해서 재사용하자    
     
 **persistence.xml**    
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="springboard">
@@ -66,7 +66,7 @@ JPA를 스프링과 연동하면 커넥션 정보는 스프링에서 제공하�
 그리고 이전에 SpringMVC 학습에서 XML 변환 처리에 사용했던 JAXB2 어노테이션들은 모두 삭제한다.   
   
 **BoardVO**
-```
+```java
 package com.springbook.biz.board;
 
 import java.util.Date;
@@ -197,16 +197,16 @@ searchCondition, searchKeyword, uploadFile 세개의 변수에는 @Transient를 
 스프링과 JPA를 연동하려면 다음과 같이 2개의 클래스를 스프링 설정 파일에 ```<bean>```등록해야 한다.  
   
 **applicationContext.xml**
-```
+```xml
 ~ 생략 ~ 
-	<!-- Spring과 JPA 연동설정 -->
-	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
-	
-	<!-- 엔티티 매니저 팩토리 생성  -->
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
-		<property name="jpaVendorAdapter" ref="jpaVendorAdapter"></property>
-	</bean>
+<!-- Spring과 JPA 연동설정 -->
+<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+
+<!-- 엔티티 매니저 팩토리 생성  -->
+<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<property name="dataSource" ref="dataSource"></property>
+	<property name="jpaVendorAdapter" ref="jpaVendorAdapter"></property>
+</bean>
 ~ 생략 ~ 
 ```
 스프링과 JPA 연동을 위해 가장 먼저 등록할 클래스는 JpaVendorAdapter이다.   
@@ -224,26 +224,26 @@ LocalContainerEntityManagerFactoryBean 클래스를 ```<bean>``` 등록할 때
 (즉, persistence.xml 말고 applicationContext.xml에 기술해도 된다는 의미)    
 
 **예시 applicationContext.xml**
-```
+```xml
 ~ 생략 ~ 
-	<!-- Spring과 JPA 연동설정 -->
-	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
-	
-	<!-- 엔티티 매니저 팩토리 생성  -->
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
-		<property name="jpaVendorAdapter" ref="jpaVendorAdapter"></property>
-		<property name="packagesToScan" value="com.springbook.biz.board"></property>
-		<property name="jpaProperties"></property>
-	<props>		
-		<prop key="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-		<prop key="hibernate.show_sql" value="true"/>
-		<prop key="hibernate.format_sql" value="true"/>
-		<prop key="hibernate.use_sql_comments" value="false"/>
-		<prop key="hibernate.id.new_generator_mappings" value="true"/>
-		<prop key="hibernate.hbm2ddl.auto" value="create"/>
-	</props>
-	</bean>
+<!-- Spring과 JPA 연동설정 -->
+<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+
+<!-- 엔티티 매니저 팩토리 생성  -->
+<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<property name="dataSource" ref="dataSource"></property>
+	<property name="jpaVendorAdapter" ref="jpaVendorAdapter"></property>
+	<property name="packagesToScan" value="com.springbook.biz.board"></property>
+	<property name="jpaProperties"></property>
+<props>		
+	<prop key="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+	<prop key="hibernate.show_sql" value="true"/>
+	<prop key="hibernate.format_sql" value="true"/>
+	<prop key="hibernate.use_sql_comments" value="false"/>
+	<prop key="hibernate.id.new_generator_mappings" value="true"/>
+	<prop key="hibernate.hbm2ddl.auto" value="create"/>
+</props>
+</bean>
 ~ 생략 ~ 
 ```
 
@@ -256,24 +256,24 @@ DataSourceTransactionManager 는 SpringJDBC나 Mybatis를 이용하여 DB 연동
 하지만 이제는 JPA를 이용해서 DB 연동을 처리하고 있으므로 트랜잭션 관리자를 JpaTransactionManager로 변경해야 한다.  
   
 **applicationContext.xml**
-```
+```xml
 ~생략~
-	<!-- Transaction 실행 -->
-	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
-	</bean>
-	
-	<tx:advice id="txAdvice" transaction-manager="txManager">
-		<tx:attributes>
-			<tx:method name="get*" read-only="true"/>
-			<tx:method name="*"/>
-		</tx:attributes>
-	</tx:advice>
-	
-	<aop:config>
-		<aop:pointcut expression="execution(* com.springbook.biz..*(..))" id="txPointcut"/>
-		<aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
-	</aop:config>
+<!-- Transaction 실행 -->
+<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+</bean>
+
+<tx:advice id="txAdvice" transaction-manager="txManager">
+	<tx:attributes>
+		<tx:method name="get*" read-only="true"/>
+		<tx:method name="*"/>
+	</tx:attributes>
+</tx:advice>
+
+<aop:config>
+	<aop:pointcut expression="execution(* com.springbook.biz..*(..))" id="txPointcut"/>
+	<aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
+</aop:config>
 ~생략~
 ```
 기존에 트랜잭션 설정에서 트랜잭션 관리 어드바이스가 참조하는 트랜잭션 매니져 클래스를  
@@ -293,7 +293,7 @@ EntityManagerFactory 에서 EntityManager를 직접 생성하는 것이 아니�
 다음처럼 EntityManager 객체를 이용하여 BoardDAOJPA 클래스를 추가로 구현해보도록 하자  
   
 **BoardDAOJPA**
-```
+```java
 package com.springbook.biz.board.impl;
 
 import java.util.List;
@@ -351,7 +351,7 @@ JPA를 이용하는 DAO 클래스를 구현했으면 이제 마지막으로 Boar
 추가된 BoardDAOJPA 클래스로 DB 연동을 처리하면 된다.   
    
 **BoardServiceImpl**   
-```
+```java
 package com.springbook.biz.board.impl;
 
 import java.util.List;
@@ -393,7 +393,7 @@ public class BoardServiceImpl implements BoardService {
 실행하기전에 H2 데이터베이스가 구동되어 있는지 확인하고, 톰캣 서버도 재구동한다.  
 톰캣 서버가 재구동 되면 다음처럼 시퀀스와 테이블이 삭제되고 다시 만들어질 것이다.  
   
- ```
+ ```yml
  Hibernate: 
     drop table if exists BOARD
 Hibernate: 
@@ -420,7 +420,7 @@ INFO : org.springframework.web.context.ContextLoader - Root WebApplicationContex
  그리고 등록될 글 목록이 화면에 출력되는데,  
  이 과정에서 하이버네이트가 생성한 다양한 SQL 구문을 콘솔을 통해 확인해볼 수 있다.  
    
-```
+```yml
 ===> JPA로 getBoardList() 기능처리
 Hibernate: 
     select
